@@ -1,0 +1,14 @@
+- for all the tables, the primary key is given as UUID, change it to ID and make it auto incrementing integer.
+- additionally, add a new column called transaction_id which will be a UUID and will be unique for each record.
+ 
+- FM_AUDIT
+    - Remove VENDOR_ID from the FM_AUDIT table as it is not needed.
+    - Rename FM_TRANSACTION_ID to VENDOR_ID
+ 
+- FM_CONFIGFIELDS
+    - Rename table FM_CONFIGFIELDS to FM_ACCOUNTS
+- FM_TRANSACTIONS
+    - The FM_TRASACTIONS table should be connected to the FM_AUDIT table through a foreign key relationship. Please do keep this in mind that FM_TRANSACTIONS table has unique entries and FM_AUDIT can have multiple entries. Only the status gets updated in the FM_TRASACTIONS table. FM_AUDIT involves all the logs of the api hits done by anyone in the system
+    - Rename column KID to VENDOR_ID
+    - Rename REFERNCE_ID to VENDOR_REFERENCE_ID
+    - Rename FM_TRANSACTION_ID to VENDOR_TRANSACTION_ID
